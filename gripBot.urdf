@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<!--simple gripBot-->
+
+<robot name="gripBot">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <mass value="1" />
+            <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0" />
+        </inertial>
+        <collision>
+            <origin xyz="-0.5 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.1" length="0.5"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="-0.5 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.1" length="0.5"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="movingFinger">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <mass value="1" />
+            <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0" />
+        </inertial>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="0.1" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.1" length="0.5"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="j0" type="prismatic">
+        <parent link="base_link" />
+        <child link="movingFinger" />
+        <origin xyz="0.000000 0.000000 0.000000" rpy="0.000000 0.000000 0.000000" />
+        <axis xyz="0 1 0" />
+        <limit lower="-2.967" upper="2.967" effort="176" velocity="1.7104" />
+    </joint>
+    
+</robot>
